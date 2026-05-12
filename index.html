@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ERFA – Stay Healthy for a Better Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B2A6B;
+      --pink: #E91E8C;
+      --cream: #FAF7F2;
+      --white: #FFFFFF;
+      --light-gray: #F2EFE9;
+      --text: #1a1a1a;
+      --muted: #7a7a7a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: 'ERFA';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px;
+      color: rgba(255,255,255,0.04);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .logo-box {
+      background: var(--pink);
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      letter-spacing: 2px;
+    }
+    .hero-tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── QUICK LINKS ── */
+    .quick-links {
+      padding: 28px 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .quick-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .quick-btn:active { transform: scale(0.98); }
+    .quick-btn.insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .quick-btn.phone { background: var(--navy); }
+    .btn-icon-wrap {
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-icon-wrap svg { width: 22px; height: 22px; fill: white; }
+    .btn-text-wrap { flex: 1; }
+    .btn-title { font-size: 15px; font-weight: 600; color: white; display: block; }
+    .btn-sub { font-size: 12px; color: rgba(255,255,255,0.7); display: block; margin-top: 1px; }
+    .btn-arrow { color: rgba(255,255,255,0.6); font-size: 18px; }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      max-width: 480px;
+      margin: 36px auto 0;
+      padding: 0 20px;
+    }
+    .section-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: var(--navy);
+    }
+    .section-head p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .section-divider {
+      width: 36px; height: 3px;
+      background: var(--pink);
+      border-radius: 2px;
+      margin: 8px 0;
+    }
+
+    /* ── MENU CARDS ── */
+    .menu-section {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px 20px;
+    }
+    .menu-category {
+      margin-bottom: 28px;
+    }
+    .cat-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--navy);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--navy);
+      opacity: 0.12;
+    }
+    .menu-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .item-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .item-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .item-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--pink);
+      white-space: nowrap;
+      letter-spacing: 1px;
+    }
+    .item-macros {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .macro {
+      background: var(--light-gray);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 3px 9px;
+      border-radius: 99px;
+    }
+    .item-contents {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+    .item-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* highlight card */
+    .item-card.highlight {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .item-card.highlight .item-name { color: white; }
+    .item-card.highlight .item-contents { color: rgba(255,255,255,0.6); }
+    .item-card.highlight .item-price { color: var(--pink); }
+    .item-card.highlight .macro { background: rgba(255,255,255,0.12); color: white; }
+
+    /* extras */
+    .extras-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .extra-chip {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .extra-chip span { color: var(--pink); font-weight: 600; }
+
+    /* discount */
+    .discount-card {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 18px;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .discount-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .discount-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+    .discount-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 10px 6px;
+    }
+    .discount-persons { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .discount-pct {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--pink);
+      letter-spacing: 1px;
+    }
+    .discount-note { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 10px; }
+
+    /* hours bar */
+    .hours-bar {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      max-width: 480px;
+      margin: 0 auto 12px;
+    }
+    .hours-icon {
+      width: 38px; height: 38px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .hours-text { font-size: 14px; font-weight: 500; color: var(--navy); }
+    .hours-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    /* footer */
+    .footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 20px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+    }
+    .footer-pink { color: var(--pink); }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo">
+      <div class="logo-box">ERFA</div>
+    </div>
+    <p class="hero-tagline">Stay Healthy for a Better Life</p>
+    <div class="hero-badges">
+      <span class="badge">🚫 No Added Sugar</span>
+      <span class="badge">🧂 Low Salt</span>
+      <span class="badge">🫒 Minimal Oil</span>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="quick-links">
+
+    <a href="https://www.instagram.com/erfa.company?igsh=Yzg2Ym4zcDRoYWxq" target="_blank" class="quick-btn insta">
+      <div class="btn-icon-wrap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+      </div>
+      <div class="btn-text-wrap">
+        <span class="btn-title">Instagram</span>
+        <span class="btn-sub">@erfa.company</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a href="tel:+491638659118" class="quick-btn phone">
+      <div class="btn-icon-wrap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+        </svg>
+      </div>
+      <div class="btn-text-wrap">
+        <span class="btn-title">Call Us</span>
+        <span class="btn-sub">+49 163 865 9118</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+
+  </div>
+
+  <!-- HOURS -->
+  <div style="max-width:480px; margin: 20px auto 0; padding: 0 20px;">
+    <div class="hours-bar">
+      <div class="hours-icon">🕙</div>
+      <div>
+        <div class="hours-text">Order Time</div>
+        <div class="hours-sub">10:30 – 19:00 · 5€ delivery for nearby offices & residents</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU HEADING -->
+  <div class="section-head">
+    <h2>MENU</h2>
+    <div class="section-divider"></div>
+    <p>Fresh · Healthy · High Protein</p>
+  </div>
+
+  <div class="menu-section">
+
+    <!-- SIGNATURE BOWLS -->
+    <div class="menu-category">
+      <div class="cat-title">🥗 Signature Bowls</div>
+      <p class="menu-note">* All bowls include grilled & steamed vegetables: Sweet potato · Broccoli · Soy-glazed mushrooms · Aubergine with pomegranate paste · Avocado · Olives · Tomato · Fresh salad</p>
+      <p class="menu-note" style="margin-bottom:14px;">Choice of base: Rice (white / brown) or Noodles</p>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🥩 Erfa.Meat Bowl</span>
+          <span class="item-price">8,49 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">30g Protein</span>
+          <span class="macro">25g Carbs</span>
+          <span class="macro">400 Kcal</span>
+        </div>
+        <div class="item-contents">Rice / Noodles · Meat · Veggies</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🐔 Erfa.Chicken Bowl</span>
+          <span class="item-price">7,99 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">35g Protein</span>
+          <span class="macro">25g Carbs</span>
+          <span class="macro">300 Kcal</span>
+        </div>
+        <div class="item-contents">Rice / Noodles · Chicken · Veggies</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🌱 Erfa.Veggie Bowl</span>
+          <span class="item-price">7,99 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">25g Protein</span>
+          <span class="macro">40g Carbs</span>
+          <span class="macro">320 Kcal</span>
+        </div>
+        <div class="item-contents">Noodles · Soja · Veggies</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🌱 Veggie Pro Bowl <small style="font-weight:400;font-size:12px;">100g</small></span>
+          <span class="item-price">7,49 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">30g Protein</span>
+          <span class="macro">60g Carbs</span>
+          <span class="macro">100g Portion</span>
+        </div>
+        <div class="item-contents">Rice / Noodles · Soja + Falafel · Veggies</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🌱 Veggie Hell Bowl <small style="font-weight:400;font-size:12px;">200g</small></span>
+          <span class="item-price">9,99 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">60g Protein</span>
+          <span class="macro">120g Carbs</span>
+          <span class="macro">200g Portion</span>
+        </div>
+        <div class="item-contents">Rice / Noodles · Soja + Falafel · Veggies</div>
+      </div>
+
+      <div class="item-card highlight">
+        <div class="item-top">
+          <span class="item-name">🥘 Erfa.Mixed Bowl</span>
+          <span class="item-price">11,99 €</span>
+        </div>
+        <div class="item-macros">
+          <span class="macro">25g Protein</span>
+          <span class="macro">40g Carbs</span>
+          <span class="macro">320 Kcal</span>
+        </div>
+        <div class="item-contents">Rice (white+brown) + Noodles · Meat + Chicken + Soja + Falafel · Veggies</div>
+      </div>
+
+      <div class="item-card highlight" style="background: var(--pink);">
+        <div class="item-top">
+          <span class="item-name" style="color:white;">👥 For 2 Persons – Any Bowl</span>
+          <span class="item-price" style="color:white;">13,99 €</span>
+        </div>
+      </div>
+
+      <div class="extras-row" style="margin-top:10px;">
+        <div class="extra-chip">+ Pesto <span>2,00 €</span></div>
+        <div class="extra-chip">+ Peanut Butter <span>2,00 €</span></div>
+        <div class="extra-chip">+ Extra Toppings <span>2,49 €</span></div>
+      </div>
+    </div>
+
+    <!-- BURGER & PIZZA -->
+    <div class="menu-category">
+      <div class="cat-title">🍔 Burger & Pizza</div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🌿 Vegan Burger</span>
+          <span class="item-price">7,99 €</span>
+        </div>
+        <div class="item-contents">Falafel · Portobello mushroom · Brown bread · Pesto</div>
+        <div class="item-note">+ Extra Salad 1,99 €</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🍕 Protein Pizza <small style="font-weight:400;font-size:12px;">1 big slice</small></span>
+          <span class="item-price">3,49 €</span>
+        </div>
+        <div class="item-contents">Olives · Chicken · Cheese · Minced beef · Tomato sauce · Mushroom</div>
+      </div>
+    </div>
+
+    <!-- SWEETS & DRINKS -->
+    <div class="menu-category">
+      <div class="cat-title">🍰 Sweets & Drinks</div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🍰 Erfa.Cheese Cake</span>
+          <span class="item-price">5,49 €</span>
+        </div>
+        <div class="item-contents">Plain / Lemon</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🧃 Soft Drinks</span>
+          <span class="item-price">2,50 €</span>
+        </div>
+        <div class="item-contents">Cola zero · Spezi zero · Fanta zero · Maracuja · Lemonade</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🥛 Protein Shake</span>
+          <span class="item-price">2,99 €</span>
+        </div>
+        <div class="item-contents">Banana / Vanilla / Chocolate</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-top">
+          <span class="item-name">🫙 Protein Yogurt</span>
+          <span class="item-price">1,99 €</span>
+        </div>
+        <div class="item-contents">Banana / Vanilla / Chocolate</div>
+      </div>
+    </div>
+
+    <!-- DISCOUNT -->
+    <div class="menu-category">
+      <div class="discount-card">
+        <div class="discount-title">🎉 Group Discount</div>
+        <div class="discount-row">
+          <div class="discount-box">
+            <div class="discount-persons">4+ persons</div>
+            <div class="discount-pct">20%</div>
+          </div>
+          <div class="discount-box">
+            <div class="discount-persons">6+ persons</div>
+            <div class="discount-pct">30%</div>
+          </div>
+          <div class="discount-box">
+            <div class="discount-persons">9+ persons</div>
+            <div class="discount-pct">50%</div>
+          </div>
+        </div>
+        <div class="discount-note">* 50% discount only from 10:30 – 13:00</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">ERFA<span class="footer-pink">.</span></div>
+    <div class="footer-tagline">STAY HEALTHY FOR A BETTER LIFE</div>
+  </div>
+
+</body>
+</html>
